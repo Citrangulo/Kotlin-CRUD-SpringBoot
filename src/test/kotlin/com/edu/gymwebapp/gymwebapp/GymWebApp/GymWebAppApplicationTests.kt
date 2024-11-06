@@ -1,4 +1,4 @@
-package com.gymwebapp.GymWebApp
+package com.edu.gymwebapp.gymwebapp.GymWebApp
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

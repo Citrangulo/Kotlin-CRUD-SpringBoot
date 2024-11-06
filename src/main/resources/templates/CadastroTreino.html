@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -12,53 +12,83 @@
 <body>
     <div class="container">
 
-        <h2>Cadastro de Treino</h2>
+        <h2>Cadastro de Exercício</h2>
 
-        <form>
+        <div class="bg-image text-center p-5">
 
-            <div class="mb-2">
-                <input class="fomr-control" type="text" id="exercício" name="exercício" placeholder="Exercício">
-            </div>
+            <form th:object="${treino}" method="post" action="/cadastrar">
 
-            <div class="mb-2">
-                <input class="fomr-control" type="number" id="repetições" name="repetições" placeholder="Número de Repetições">
-            </div>
+                <div class="mb-2">
+                    <input class="fomr-control" type="text" id="exercicio" name="exercicio" placeholder="Exercício" th:field="*{exercicio}">
+                </div>
 
-            <div class="mb-2">
-                <input class="fomr-control" type="number" id="series" name="series" placeholder="Número de Séries">
-            </div>
+                <div class="mb-2">
+                    <input class="fomr-control" type="text" id="series" name="series" placeholder="Número de Séries" th:field="*{series}">
+                </div>
 
-            <div class="mb-2">
-                <input class="fomr-control" type="text" id="peso" name="peso" placeholder="Peso">
-            </div>
+                <div class="mb-2">
+                    <input class="fomr-control" type="text" id="minRep" name="minRep" placeholder="Número Mínimo de Repetições" th:field="*{minrep}">
+                </div>
 
-            <div class="mb-2">
-                <input class="fomr-control" type="text" id="descanso" name="descanso" placeholder="Tempo de Descanso">
-            </div>
+                <div class="mb-2">
+                    <input class="fomr-control" type="text" id="maxRep" name="maxRep" placeholder="Número Máximo de Repetições" th:field="*{maxrep}">
+                </div>
 
-            <div class="mb-2">
-                <input class="fomr-control" type="text" id="modalidade" name="modalidade" placeholder="Maquina ou Livre?">
-            </div>
+                <div class="mb-2">
+                    <input class="fomr-control" type="text" id="peso" name="peso" placeholder="Peso" th:field="*{peso}">
+                </div>
 
-            <div class="mb-2">
+                <div class="mb-2">
+                    <input class="fomr-control" type="text" id="tDesc" name="tDesc" placeholder="Tempo de Descanso" th:field="*{tdesc}">
+                </div>
 
-                <select class="form-select" aria-label="Default select example">
-                    <option selected value="">Selecione o Grupo Muscular</option>
-                    <option value="Ombro">Ombro</option>
-                    <option value="Peito">Peito</option>
-                    <option value="Costas">Costas</option>
-                    <option value="Braços">Biceps/Triceps</option>
-                    <option value="Quadriceps">Quadriceps</option>
-                    <option value="Posterior">Posterior</option>
-                    <option value="Barriga">Abdominal</option>
-                </select>
+                <div class="mb-2">
+                    <input class="fomr-control" type="text" id="modalidade" name="modalidade" placeholder="Maquina ou Livre?" th:field="*{modalidade}">
+                </div>
 
-            </div>
+                <div class="mb-2">
 
-            <button type="submit" class="dtn dtn-primary">Cadastrar Treino</button>
+                    <select class="form-select" aria-label="Default select example" th:field="*{grupomuscular}">
+                        <option selected value="">Selecione o Grupo Muscular</option>
+                        <option value="1">Ombro</option>
+                        <option value="2">Peito</option>
+                        <option value="3">Costas</option>
+                        <option value="4">Biceps/Triceps</option>
+                        <option value="5">Quadriceps</option>
+                        <option value="6">Posterior</option>
+                        <option value="7">Abdominal</option>
+                    </select>
+
+                </div>
+
+                <button type="submit" class="btn gradient-btn">Cadastrar Exercício no Treino</button>
+
+                <style>
+                .gradient-btn {
+                    background: linear-gradient(45deg, #6a11cb, #2575fc);
+                    color: #fff;
+                    border: none;
+                }
+
+                .gradient-btn:hover {
+                    background: linear-gradient(45deg, #2575fc, #6a11cb);
+                    transition: 0.3s;
+                }
+           </style>
 
 
-        </form>
+            </form>
+        </div>
+
+        <style>
+                .bg-image {
+                background-image: url('Pedra.jpg');
+                background-size: cover;
+                background-position: left;
+                background-repeat: no-repeat;
+                height: 100vh;
+                }
+            </style>
 
     </div>
 

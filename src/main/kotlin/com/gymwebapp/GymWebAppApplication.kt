@@ -1,4 +1,4 @@
-package com
+package com.gymwebapp
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
