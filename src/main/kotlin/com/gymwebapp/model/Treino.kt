@@ -11,7 +11,7 @@ data class Treino (
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long? = null,
 
     val exercicio: String = "",
     val series: String = "",
