@@ -42,8 +42,17 @@
                     <input class="fomr-control" type="text" id="tDesc" name="tDesc" placeholder="Tempo de Descanso" th:field="*{tdesc}">
                 </div>
 
+
                 <div class="mb-2">
-                    <input class="fomr-control" type="text" id="modalidade" name="modalidade" placeholder="Maquina ou Livre?" th:field="*{modalidade}">
+
+                    <select class="form-select" aria-label="Default select example" th:field="*{modalidade}">
+                        <option selected value="">Selecione o Grupo Muscular</option>
+                        <option value="Máquina">Máquina</option>
+                        <option value="Halter">Halter</option>
+                        <option value="Barra">Barra</option>
+                        <option value="Livre">Livre</option>
+                    </select>
+
                 </div>
 
                 <div class="mb-2">

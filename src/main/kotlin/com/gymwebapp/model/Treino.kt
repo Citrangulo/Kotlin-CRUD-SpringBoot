@@ -4,6 +4,8 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import java.time.Clock
+import java.time.Instant
 
 
 @Entity
@@ -12,6 +14,8 @@ data class Treino (
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     var id: Long? = null,
+
+    var dataTreino: Instant = Instant.now(Clock.systemUTC()),
 
     val exercicio: String = "",
     val series: String = "",
@@ -22,4 +26,14 @@ data class Treino (
     val modalidade: String = "",
     val grupomuscular: String= ""
 ) {
+
+@Entity
+public class treinoOmbro (treinoOmbro: Treino){
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    var id: Long? = null
+
+    }
+
 }

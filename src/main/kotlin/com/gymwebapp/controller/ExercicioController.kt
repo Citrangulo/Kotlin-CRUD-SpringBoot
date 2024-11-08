@@ -1,6 +1,7 @@
 package com.gymwebapp.controller
 
 import com.gymwebapp.model.Treino
+import com.gymwebapp.repository.TreinoOmbroRepository
 import com.gymwebapp.repository.TreinoRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -11,28 +12,32 @@ import org.springframework.web.bind.annotation.PostMapping
 
 
 @Controller
-class ExercicioController {
+class ExercicioController(
+    private val treinoRepository: TreinoRepository,
+    private val ombroRepository: TreinoOmbroRepository) {
 
-    @Autowired
-    lateinit var treinoRepository: TreinoRepository
 
     @GetMapping("/Cadastro/Treino")
     fun fazerCadastroNovoExercicio(model: Model) : String{
 
-
         
         var treino = Treino()
 
+        var treinoOmbro = Treino.treinoOmbro(treino)
+
         model.addAttribute("treino", treino)
+        model.addAttribute("treinoOmbro", treinoOmbro)
 
         return "CadastroTreino"
     }
 
     @PostMapping("/cadastrar") // Salva os treinos no Banco
-    fun cadastrarExercicio(treino: Treino): String{
+    fun cadastrarExercicio(treino: Treino, treinoOmbro: Treino.treinoOmbro): String{
 
-        println(treino)
         treinoRepository.save(treino)
+        if (treino.grupomuscular == "Ombro"){
+            ombroRepository.save(treinoOmbro)
+        }
 
         return "redirect:/TreinoCadastrado"
 
