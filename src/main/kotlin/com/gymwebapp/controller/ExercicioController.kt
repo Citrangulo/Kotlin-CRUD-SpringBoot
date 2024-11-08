@@ -1,6 +1,7 @@
 package com.gymwebapp.controller
 
 import com.gymwebapp.model.Treino
+import com.gymwebapp.model.TreinoOmbro
 import com.gymwebapp.repository.TreinoOmbroRepository
 import com.gymwebapp.repository.TreinoRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,7 +24,7 @@ class ExercicioController(
         
         var treino = Treino()
 
-        var treinoOmbro = Treino.treinoOmbro(treino)
+        var treinoOmbro = TreinoOmbro()
 
         model.addAttribute("treino", treino)
         model.addAttribute("treinoOmbro", treinoOmbro)
@@ -32,14 +33,23 @@ class ExercicioController(
     }
 
     @PostMapping("/cadastrar") // Salva os treinos no Banco
-    fun cadastrarExercicio(treino: Treino, treinoOmbro: Treino.treinoOmbro): String{
+    fun cadastrarExercicio(treino: Treino, treinoOmbro: TreinoOmbro): String{
 
         treinoRepository.save(treino)
         if (treino.grupomuscular == "Ombro"){
             ombroRepository.save(treinoOmbro)
         }
+        // chamada tabela peito
 
-        return "redirect:/TreinoCadastrado"
+        // chamada tabela costas
+
+        // chamada tabela quadr
+
+        // chamada tabela post
+
+        // chamada tabela abd (fechar o else)
+
+        return "redirect:/TreinoCadastrado" // independente da condição que caia, tem que gravar na tabela principal que contem todos os treinos.
 
     }
 
