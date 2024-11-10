@@ -1,30 +1,25 @@
 package com.gymwebapp.model
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import java.time.Clock
-import java.time.Instant
+//import jakarta.persistence.Entity
+//import jakarta.persistence.GeneratedValue
+//import jakarta.persistence.GenerationType
+//import jakarta.persistence.Id
+//import java.time.Clock
+//import java.time.Instant
 
 
-@Entity
-data class Treino (
+open class TreinoBasicLayout (
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    var id: Long? = null,
+    open var id: Long? = null,
 
-    var dataTreino: Instant = Instant.now(Clock.systemUTC()),
-
-    val exercicio: String = "",
-    val series: String = "",
-    val minrep: String = "",
-    val maxrep: String = "",
-    val peso: String = "",
-    val tdesc: String = "",
-    val modalidade: String = "",
-    val grupomuscular: String= ""
+    open val exercicio: String = "",
+    open val series: String = "",
+    open val minrep: String = "",
+    open val maxrep: String = "",
+    open val peso: String = "",
+    open val tdesc: String = "",
+    open val modalidade: String = "",
+    open val grupomuscular: String= ""
 ) {
 
 }

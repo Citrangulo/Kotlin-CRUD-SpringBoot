@@ -10,7 +10,7 @@ import java.time.Instant
 
 
 @Entity
-data class TreinoOmbro (
+data class TreinoAbdominal (
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
