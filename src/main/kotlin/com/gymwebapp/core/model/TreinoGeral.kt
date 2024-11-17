@@ -8,24 +8,21 @@ import java.time.Clock
 import java.time.Instant
 
 
-
 @Entity
-data class TreinoCostas (
+data class TreinoGeral (
+
+    var data: Instant = Instant.now(Clock.systemUTC()),
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     override var id: Long? = null,
-
-    var dataTreino: Instant = Instant.now(Clock.systemUTC()),
-
     override val exercicio: String = "",
-    override val series: String = "",
+    override val series: Int = 0,
     override val minrep: String = "",
     override val maxrep: String = "",
-    override val peso: String = "",
+    override val peso: Int = 0,
     override val tdesc: String = "",
     override val modalidade: String = "",
-    override val grupomuscular: String= ""
-) : TreinoBasicLayout(id, exercicio, series, minrep, maxrep, peso, tdesc, modalidade, grupomuscular) {
+    override val grupomuscular: String= "",
 
-}
+) : TreinoBasicLayout(id)
