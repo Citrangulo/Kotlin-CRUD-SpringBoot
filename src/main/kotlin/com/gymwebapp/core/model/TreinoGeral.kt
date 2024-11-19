@@ -1,14 +1,12 @@
 package com.gymwebapp.model
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import java.time.Clock
 import java.time.Instant
 
 
 @Entity
+@Table(name = "TREINO")
 data class TreinoGeral (
 
     var data: Instant = Instant.now(Clock.systemUTC()),

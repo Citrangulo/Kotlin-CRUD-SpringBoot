@@ -12,5 +12,5 @@ open class TreinoBasicLayout(
     override val modalidade: String = "",
     override val grupomuscular: String= ""
 
-): ExercicioBasicLayout(exercicio, tdesc, modalidade, grupomuscular)
+): ExercicioBasicLayout(exercicio = "String", tdesc = "String", modalidade = "String", grupomuscular = "String")
 

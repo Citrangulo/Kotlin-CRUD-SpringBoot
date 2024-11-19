@@ -14,13 +14,16 @@ import org.springframework.web.bind.annotation.PostMapping
 @Controller
 class TreinoController(
     private val treinoRepository: TreinoRepository,
-    private val serieRepository: SerieRepository
+    private val serieRepository: SerieRepository,
 ) {
 
+    //chama a pagina inicial
     @GetMapping("/home")
     fun home(): String {
         return "home"
     }
+
+    //Cadastra novo exercicio no treino e as series, atreladas ao novo treino
     @GetMapping("/Cadastro/Treino")
     fun fazerCadastroNovoExercicio(model: Model, treinoGeral: TreinoGeral, serieExecutada: SerieExecutada): String {
 
@@ -28,6 +31,8 @@ class TreinoController(
         model.addAttribute("serie", serieExecutada)
         return "CadastroTreino"
     }
+
+    //Cadastra novo exercicio no treino e as series, atreladas ao novo treino
     @PostMapping("/cadastrar") // Salva os treinos no Banco
     fun cadastrarExercicio(@PathVariable("id") id: Long?, treino: TreinoGeral, serie: SerieExecutada): String {
 
@@ -46,7 +51,6 @@ class TreinoController(
         val treinos = treinoRepository.findAll()
         model.addAttribute("treinos", treinos)
         return "TreinoCadastrado"
-
     }
 
     @GetMapping("/treino/edicao/{id}")
@@ -58,7 +62,10 @@ class TreinoController(
     }
 
     @PostMapping("/editar/{id}")
-    fun editarTreino(@PathVariable("id") id: Long, treino: TreinoGeral): String {
+    fun editarTreino(
+        @PathVariable("id") id: Long,
+        treino: TreinoGeral
+    ): String {
 
         treino.id = id
         treinoRepository.save(treino)

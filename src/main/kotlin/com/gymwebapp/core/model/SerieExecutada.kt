@@ -1,13 +1,11 @@
 package com.gymwebapp.core.model
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import java.time.Clock
 import java.time.Instant
 
 @Entity
+@Table(name = "SERIES")
 data class SerieExecutada(
 
 
@@ -19,9 +17,11 @@ data class SerieExecutada(
     val repfeitas: Int = 0,
     val pesodaserie: Int = 0,
 
+
     override val series: Int = 0,
     override val minrep: String = "",
     override val maxrep: String = "",
-    override val peso: Int = 0
+    override val peso: Int = 0,
+    override val exercicio: String ="",
 
-) : SerieBasicLayout(series, minrep, maxrep, peso)
+) : ExercicioBasicLayout(series, minrep, maxrep, peso, exercicio)
